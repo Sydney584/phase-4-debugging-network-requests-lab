@@ -60,14 +60,16 @@ developing your own process.
 
 ## Your Notes Here
 
+
 - Add a new toy when the toy form is submitted
 
-  - How I debugged:
-
+  - How I debugged: I first submitted the new toy in the form & checked for any errors in my Dev Tools under Network as well as my console as it did not update as expected. Immediately received 500 error. 500 error means I need to check my Rails server log; I did check and found NameError (uninitialized constant ToysController::Toys): I updated create method in my Toys controller from Toys to Toy. Once updated I checked my Dev Tools again however I recieved a cors error. 
 - Update the number of likes for a toy
 
-  - How I debugged:
+  - How I debugged: I first clicked like on one of the toys in the browser & checked for any errors in my Dev Tools under Network as well as my console as it did not update as expected. I received this error VM201:1 Uncaught (in promise) SyntaxError: Unexpected end of JSON input at ToyCard.js:21. I also received this error in my terminal 
+ 
+  ↳ app/controllers/toys_controller.rb:15:in 'update' unpermitted parameter: :id The end of JSON message and the js line number indicated to me that I might find the error there. It was missing the render json: toy for my fetch request. I updated and saved the code and the site was now able to updated the likes on my front and back end. 
 
 - Donate a toy to Goodwill (and delete it from our database)
 
-  - How I debugged:
+  - How I debugged: I received a 404 Network error and in my console received the message that the Delete Route was not found. I checked my routes in my config file and found :destroy was not added as a route. I updated and saved the :destroy route and my app now deletes perfectly. 
